@@ -41,8 +41,13 @@
 	<H2>Resultat preg_match</H2>
 
 	<p>
-		<?php if ( preg_match($_POST["exp"] , $_POST["chaine"]) ) 
-				{echo "TRUE, expression vérifiée.";} else echo "FALSE, non verifié dans l'expression"; ?>
+		<?php 
+		if  ( isset($_POST["exp"]) & isset($_POST["chaine"])  ){
+
+		if (preg_match($_POST["exp"] , $_POST["chaine"]) ) 
+				{echo "TRUE, expression vérifiée.";} 
+				else echo "FALSE, non verifié dans l'expression"; 
+		}?>
 	</p>
 
 
