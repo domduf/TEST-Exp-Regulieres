@@ -33,6 +33,13 @@
 		</p>
 
 		<p>
+			<label for="replace">Chaine remplacement</label>
+			<input type="text" name="replace"
+				value="<?php if (isset($_POST["replace"])) {
+				echo $_POST["replace"];} ?>">
+		</p>
+		<p>
+
 			<input type="submit" name="OK"/>
 		</p>
 
@@ -44,11 +51,22 @@
 		<?php 
 		if  ( isset($_POST["exp"]) & isset($_POST["chaine"])  ){
 
-		if (preg_match($_POST["exp"] , $_POST["chaine"]) ) 
-				{echo "TRUE, expression vérifiée.";} 
-				else echo "FALSE, non verifié dans l'expression"; 
+				if (!isset($_POST["chaine"])) {
+					$chaine="";
+				} else $chaine = $_POST["chaine"];
+
+				$matches=array();
+
+				if (preg_match($_POST["exp"] , $chaine, $matches) ) 
+						{ ?> 
+						<p class="vrai"> <?php echo "TRUE, expression vérifiée."; ?> </p> <?php 
+						print_r($matches);
+						} 
+						else {?>
+						<p class="faux"> <?php echo "FALSE, non verifié dans l'expression";  ?> </p> <?php }
 		}?>
 	</p>
+
 
 
 

@@ -1,3 +1,11 @@
 p, input {
 	font-size: 1.2em;
 }
+
+.vrai {
+  color: green;
+}
+
+.faux {
+  color: red;
+}
