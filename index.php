@@ -45,7 +45,7 @@
 
 	</form>
 
-	<H2>Resultat preg_match</H2>
+	<H2>Resultat preg_match_all</H2>
 
 	<p>
 		<?php 
@@ -53,14 +53,17 @@
 
 				if (!isset($_POST["chaine"])) {
 					$chaine="";
-				} else $chaine = $_POST["chaine"];
+				} else $chaine = $_POST["chaine"]; 
 
-				$matches=array();
+					$matches=array(); 
 
-				if (preg_match($_POST["exp"] , $chaine, $matches) ) 
+				if (preg_match_all($_POST["exp"] , $chaine, $matches) ) 
 						{ ?> 
-						<p class="vrai"> <?php echo "TRUE, expression vérifiée."; ?> </p> <?php 
-						print_r($matches);
+						<p class="vrai"> <?php echo "TRUE, expression vérifiée."; ?> </p> 
+
+						<pre><?php 
+						print_r($matches); ?>
+						</pre> <?php
 						} 
 						else {?>
 						<p class="faux"> <?php echo "FALSE, non verifié dans l'expression";  ?> </p> <?php }
